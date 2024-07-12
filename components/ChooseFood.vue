@@ -33,20 +33,51 @@ function toggleStuff(item: StuffItem, category = '', _e?: Event) {
     action: item.name,
   })
 }
+
+const { t: $t } = useI18n({
+  locale: 'en',
+})
+const mapDishTag = (text: string) => {
+    const mappings: { [key: string]: string } = {
+        '鱼（Todo）': '鱼',
+    };
+    return mappings[text] || '';
+};
+
+const speciaLabel = (text: string | null) => {
+    if (text) {
+        const mappedTag = mapDishTag(text);
+        if (mappedTag) {
+            return mappedTag;
+        }
+
+        return text;
+    }
+    return null;
+};
+const translate = (food: any, name: string|null) => {
+  return food.map((item: any) => {
+      return {
+          ...item,
+          name: $t(`${name}.${speciaLabel(item.name)}`),
+      }
+  })
+} 
+
 </script>
 
 <template>
   <div>
     <h2 m="t-4" text="xl" font="bold" p="1">
-      🥘 先选一下食材
+      🥘 {{ $t('先选一下食材') }}
     </h2>
     <div>
       <h2 opacity="90" text="base" font="bold" p="1">
-        🥬 菜菜们
+        🥬 {{ $t('菜菜们') }}
       </h2>
       <div>
         <VegetableTag
-          v-for="item, i in vegetable" :key="i"
+          v-for="item, i in translate(vegetable, 'vegetable')" :key="i"
           :active="curStuff.includes(item.name)"
           @click="toggleStuff(item, 'vegetable')"
         >
@@ -60,11 +91,11 @@ function toggleStuff(item: StuffItem, category = '', _e?: Event) {
     </div>
     <div m="y-4">
       <h2 opacity="90" text="base" font="bold" p="1">
-        🥩 肉肉们
+        🥩 {{ $t('肉肉们') }}
       </h2>
       <div>
         <MeatTag
-          v-for="item, i in meat" :key="i"
+          v-for="item, i in translate(meat, 'meat')" :key="i"
           :active="curStuff.includes(item.name)"
           @click="toggleStuff(item, 'meat')"
         >
@@ -75,11 +106,11 @@ function toggleStuff(item: StuffItem, category = '', _e?: Event) {
     </div>
     <div m="y-4">
       <h2 opacity="90" text="base" font="bold" p="1">
-        🍚 主食也要一起下锅吗？（不选也行）
+        🍚 {{ $t('choose') }}
       </h2>
       <div>
         <StapleTag
-          v-for="item, i in staple" :key="i"
+          v-for="item, i in translate(staple, 'staple')" :key="i"
           :active="curStuff.includes(item.name)"
           @click="toggleStuff(item, 'staple')"
         >
@@ -90,11 +121,11 @@ function toggleStuff(item: StuffItem, category = '', _e?: Event) {
     </div>
     <div m="t-4">
       <h2 text="xl" font="bold" p="1">
-        🍳 再选一下厨具
+        🍳 {{ $t('再选一下厨具') }}
       </h2>
       <div>
         <ToolTag
-          v-for="item, i in tools" :key="i"
+          v-for="item, i in translate(tools, 'tools')" :key="i"
           :active="curTool === item.name"
           @click="rStore.clickTool(item)"
         >

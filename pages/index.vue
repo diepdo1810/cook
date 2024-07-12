@@ -6,7 +6,7 @@ const rStore = useRecipeStore()
   <div text-4xl>
     <button
       class="cursor-pointer transition active:text-green-800 hover:(text-green-600)"
-      title="重置"
+      :title="$t('重置')"
       @click="rStore.reset"
     >
       <div v-if="rStore.selectedStuff.length" i-mdi-pot-steam-outline />
@@ -14,7 +14,7 @@ const rStore = useRecipeStore()
     </button>
   </div>
   <p text="sm" m="b-4">
-    好的，今天我们来做菜！
+    {{ $t('cookToday') }}
   </p>
 
   <ChooseFood />

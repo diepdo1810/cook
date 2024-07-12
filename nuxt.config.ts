@@ -15,19 +15,28 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@unocss/nuxt',
     '@pinia/nuxt',
-
     '@nuxt/test-utils/module',
     '@nuxtjs/color-mode',
     '@vite-pwa/nuxt',
-
     '@zadigetvoltaire/nuxt-gtm',
-
     '@yunlefun/vue/nuxt',
-
     // fix QQ in iOS
     // See https://github.com/unjs/ofetch/pull/366
     'nuxt-fix-ofetch',
+    "@nuxtjs/ionic",
+    "@nuxtjs/i18n"
   ],
+
+  i18n: {
+    locales: [
+      { code: 'en', iso: 'en-US', file: 'en.js' },
+      { code: 'vi', iso: 'vi-VN', file: 'vi.js' }
+    ],
+    defaultLocale: 'en',
+    langDir: 'locales/',
+    strategy: 'prefix_except_default',
+    vueI18n: 'en'
+  },
 
   experimental: {
     // when using generate, payload js assets included in sw precache manifest
