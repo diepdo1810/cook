@@ -157,7 +157,7 @@ export const tools: StuffItem[] = [
     icon: 'i-gg-smart-home-cooker',
   },
   {
-    label: 'Versatile Pot',
+    label: '一口能炒又能煮的大锅',
     name: '一口大锅',
     emoji: '',
     icon: 'i-mdi-pot-steam-outline',

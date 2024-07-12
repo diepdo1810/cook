@@ -77,7 +77,7 @@ const translate = (food: any, name: string|null) => {
       </h2>
       <div>
         <VegetableTag
-          v-for="item, i in translate(vegetable, 'vegetable')" :key="i"
+          v-for="item, i in vegetable" :key="i"
           :active="curStuff.includes(item.name)"
           @click="toggleStuff(item, 'vegetable')"
         >
@@ -85,7 +85,7 @@ const translate = (food: any, name: string|null) => {
           <span v-else-if="item.image" class="inline-flex">
             <img class="inline-flex" w="2" h="2" width="10" height="10" :src="item.image" :alt="item.name">
           </span>
-          <span class="inline-flex" m="l-1">{{ item.name }}</span>
+          <span class="inline-flex" m="l-1">{{ $t('vegetable.' + item.name) }}</span>
         </VegetableTag>
       </div>
     </div>
@@ -95,12 +95,12 @@ const translate = (food: any, name: string|null) => {
       </h2>
       <div>
         <MeatTag
-          v-for="item, i in translate(meat, 'meat')" :key="i"
+          v-for="item, i in meat" :key="i"
           :active="curStuff.includes(item.name)"
           @click="toggleStuff(item, 'meat')"
         >
           <span>{{ item.emoji }}</span>
-          <span m="l-1">{{ item.name }}</span>
+          <span m="l-1">{{ $t('meat.' + speciaLabel(item.name)) }}</span>
         </MeatTag>
       </div>
     </div>
@@ -110,12 +110,12 @@ const translate = (food: any, name: string|null) => {
       </h2>
       <div>
         <StapleTag
-          v-for="item, i in translate(staple, 'staple')" :key="i"
+          v-for="item, i in staple" :key="i"
           :active="curStuff.includes(item.name)"
           @click="toggleStuff(item, 'staple')"
         >
           <span>{{ item.emoji }}</span>
-          <span m="l-1">{{ item.name }}</span>
+          <span m="l-1">{{ $t('staple.' + item.name) }}</span>
         </StapleTag>
       </div>
     </div>
@@ -125,7 +125,7 @@ const translate = (food: any, name: string|null) => {
       </h2>
       <div>
         <ToolTag
-          v-for="item, i in translate(tools, 'tools')" :key="i"
+          v-for="item, i in tools" :key="i"
           :active="curTool === item.name"
           @click="rStore.clickTool(item)"
         >
@@ -135,7 +135,7 @@ const translate = (food: any, name: string|null) => {
           <span v-else-if="item.icon" class="inline-flex">
             <div :class="item.icon" />
           </span>
-          <span class="inline-flex" m="l-1">{{ item.label || item.name }}</span>
+          <span class="inline-flex" m="l-1">{{ $t('tools.' + item.name) }}</span>
         </ToolTag>
       </div>
     </div>
