@@ -11,6 +11,17 @@ export default {
     肉肉们: 'Meats',
     choose: 'Do you want to cook the staple food together? (You can also not choose)',
     再选一下厨具: 'Select kitchenware again',
+    模糊匹配: 'Fuzzy match',
+    严格匹配: 'Strict match',
+    生存模式: 'Survival mode',
+    来看看组合出的菜谱吧: 'Let\'s see the recipes that have been combined',
+    你要先选食材或工具哦: 'You need to select ingredients or tools first',
+    还没有完美匹配的菜谱呢: 'There is no perfect match for the recipe yet',
+    大胆尝试一下: 'Boldly try',
+    或者: 'Or',
+    欢迎来: 'Welcome to',
+    反馈新的菜谱: 'Feedback new recipes',
+    这里: 'Here',
     vegetable: {
         土豆: 'Potato',
         胡萝卜: 'Carrot',
@@ -469,5 +480,6 @@ export default {
         番茄排骨汤: "Tomato Pork Rib Soup",
         红烧大骨头: "Braised Large Pork Bones",
         萝卜烧排骨: "Radish Braised Pork Ribs",
+        干锅莴笋: "Dry Pot Asparagus Lettuce",
     }
 }

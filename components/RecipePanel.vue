@@ -30,7 +30,7 @@ const showTooltip = computed(() => !selectedStuff.value.length && !curTool.value
 
       <Transition mode="out-in">
         <span v-if="showTooltip" text="sm" p="2">
-          你要先选食材或工具哦～
+        {{ $t('你要先选食材或工具哦') }}～
         </span>
 
         <div
@@ -46,18 +46,18 @@ const showTooltip = computed(() => !selectedStuff.value.length && !curTool.value
         </div>
 
         <div v-else text="sm">
-          <span>还没有完美匹配的菜谱呢……</span>
+          <span>{{ $t('还没有完美匹配的菜谱呢') }}……</span>
           <br>
-          <span>大胆尝试一下，或者</span>
+          <span>{{ $t('大胆尝试一下') }}，{{ $t('或者') }}</span>
           <a href="#" @click="rStore.reset()">
-            <strong>换个组合</strong>
+            <strong>{{ $t('换个组合') }}</strong>
           </a>
           <span>？</span>
           <br>
           <div m="t-1">
-            <span>欢迎来</span>
-            <a class="text-blue-600 font-bold dark:text-blue-400" href="https://docs.qq.com/sheet/DQk1vdkhFV0twQVNS?tab=uykkic" target="_blank">这里</a>
-            <span>反馈新的菜谱！</span>
+            <span>{{ $t('欢迎来') }}</span>
+            <a class="text-blue-600 font-bold dark:text-blue-400" href="https://docs.qq.com/sheet/DQk1vdkhFV0twQVNS?tab=uykkic" target="_blank">{{ $t('这里') }}</a>
+            <span>{{ $t('反馈新的菜谱') }}！</span>
           </div>
         </div>
       </Transition>

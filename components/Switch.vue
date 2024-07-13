@@ -8,7 +8,7 @@ defineProps<{
 <template>
   <div class="inline-flex items-center justify-center" m="t-2">
     <span :class="!strict && 'text-orange-600'" font="bold" m="x-1" @click="toggleStrict(false)">
-      模糊匹配
+      {{ $t('模糊匹配') }}
     </span>
     <label m="x-1" class="switch">
       <input :modelValue="strict" type="checkbox" @update:modelValue="toggleStrict">
