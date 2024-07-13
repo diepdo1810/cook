@@ -1,17 +1,20 @@
 <script lang="ts" setup>
 import type { BottomMenuItem } from '@yunlefun/vue'
+const { t: $t } = useI18n({
+  locale: 'en',
+})
 
 const items: BottomMenuItem[] = [
   {
     icon: 'i-ri-home-line',
     activeIcon: 'i-ri-home-fill',
-    title: '首页',
+    title: $t('首页'),
     to: '/',
   },
   {
     icon: 'i-ri-compass-2-line',
     activeIcon: 'i-ri-compass-2-fill',
-    title: '吃什么',
+    title: $t('吃什么'),
     to: '/random',
   },
   // {
@@ -23,13 +26,13 @@ const items: BottomMenuItem[] = [
   {
     icon: 'i-ri-question-line',
     activeIcon: 'i-ri-question-fill',
-    title: '帮助',
+    title: $t('帮助'),
     to: '/help',
   },
   {
     icon: 'i-ri-user-line',
     activeIcon: 'i-ri-user-fill',
-    title: '我的',
+    title: $t('我的'),
     to: '/user',
   },
 ]

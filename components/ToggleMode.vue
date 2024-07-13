@@ -16,6 +16,7 @@ const searchModes: {
   id: 'survival',
   name: '生存模式',
 }]
+
 </script>
 
 <template>
@@ -26,7 +27,7 @@ const searchModes: {
       :text="mode.id === rStore.curMode ? 'orange-100' : 'orange-800 dark:orange-200'"
       @click="rStore.setMode(mode.id)"
     >
-      {{ mode.name }}
+      {{ $t(mode.name) }}
     </button>
   </div>
 </template>
