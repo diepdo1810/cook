@@ -80,7 +80,7 @@ const filteredRecipes = computedAsync(async () => {
                     type="text"
                     class="w-full rounded-full bg-transparent text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 placeholder-gray-400"
                     border="~ rounded-full gray-300 op-50 focus:border-blue-500"
-                    placeholder="搜索菜谱"
+                    :placeholder="$t('搜索菜谱')"
                     autofocus py-2 pl-10 pr-3
                   >
                   <div
@@ -90,7 +90,7 @@ const filteredRecipes = computedAsync(async () => {
                   />
                 </div>
                 <div op="70" ml-2 inline-flex cursor-pointer text-base @click="closeModal">
-                  取消
+                  {{ $t('取消') }}
                 </div>
               </DialogTitle>
               <div flex="~ col grow" overflow="auto" class="mt-2" text-xs>

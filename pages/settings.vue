@@ -9,7 +9,7 @@ definePageMeta({
 <template>
   <div>
     <CommonHeader>
-      设置
+      {{ $t('设置') }}
     </CommonHeader>
 
     <div
@@ -18,10 +18,10 @@ definePageMeta({
       text-left
     >
       <YlfForm>
-        <YlfFormItem label="离开网页后保留选中数据">
+        <YlfFormItem :label="$t('离开网页后保留选中数据')">
           <YlfSwitch v-model="app.settings.keepLocalData" />
         </YlfFormItem>
-        <YlfFormItem label="更多设置，敬请期待" />
+        <YlfFormItem :label="$t('更多设置')" />
       </YlfForm>
     </div>
   </div>

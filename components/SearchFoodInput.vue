@@ -21,10 +21,10 @@ onMounted(() => {
         id="input"
         ref="searchInput"
         v-model="rStore.keyword"
-        placeholder="关键字过滤"
-        aria-label="搜索关键字"
+        :placeholder="$t('关键字过滤')"
+        :aria-label="$t('搜索关键字')"
         type="text"
-        autocomplete="false"
+        autocomplete="off"
         p="x4 y2"
         w="full"
         text="center"
@@ -32,7 +32,7 @@ onMounted(() => {
         border="~ rounded gray-200 dark:gray-700"
         class="focus:dark:gray-500"
       >
-      <label class="hidden" for="input">快速搜索</label>
+      <label class="hidden" for="input">{{ $t('快速搜索') }}</label>
     </div>
   </div>
 </template>

@@ -50,7 +50,7 @@ const showTooltip = computed(() => !selectedStuff.value.length && !curTool.value
           <br>
           <span>{{ $t('大胆尝试一下') }}，{{ $t('或者') }}</span>
           <a href="#" @click="rStore.reset()">
-            <strong>{{ $t('换个组合') }}</strong>
+            <strong> {{ $t('换个组合') }}</strong>
           </a>
           <span>？</span>
           <br>

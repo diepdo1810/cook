@@ -1,19 +1,20 @@
 <script lang="ts" setup>
+const {t: $t} = useI18n()
 definePageMeta({
   layout: 'child',
-  title: '自定义菜谱',
+  title: 'Custom recipes',
 })
 </script>
 
 <template>
   <div>
     <h3>
-      开发中，敬请期待
+      {{ $t('敬请期待') }}
     </h3>
 
     <div grid="~ cols-3" gap="4" p="4">
       <CookbookCard :cookbook="defaultCookbook">
-        默认菜谱
+        {{ $t('默认菜谱') }}
       </CookbookCard>
 
       <NewCookbookCard />

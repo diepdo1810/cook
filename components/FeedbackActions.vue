@@ -10,7 +10,7 @@ import { links } from '~/constants'
       :href="links.contribute" target="_blank"
       title="居家菜谱投稿"
     >
-      立即投稿
+      {{ $t('立即投稿') }}
     </a>
 
     <a
@@ -19,7 +19,7 @@ import { links } from '~/constants'
       :href="links.feedback" target="_blank"
       alt="通过兔小巢反馈"
     >
-      立即反馈
+    {{ $t('立即反馈') }}
     </a>
   </div>
 </template>

@@ -3,12 +3,13 @@ import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
 
 defineProps<{
   title: string
+  className?: string
   defaultOpen?: boolean
 }>()
 </script>
 
 <template>
-  <Disclosure v-slot="{ open }" :default-open="defaultOpen" as="div" class="mt-2">
+  <Disclosure v-slot="{ open }" :default-open="defaultOpen" as="div" class="mt-2" :class="className">
     <DisclosureButton
       class="w-full flex justify-between rounded-lg bg-blue-100 px-4 py-2 text-left text-sm text-blue-900 font-medium hover:bg-blue-200 focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75"
     >

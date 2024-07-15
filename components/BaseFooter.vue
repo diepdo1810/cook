@@ -10,7 +10,8 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <div p="4 t-2" class="flex flex-col items-center justify-center" text="sm">
+  <!-- About current version -->
+  <div p="4 t-2" class="flex flex-col items-center justify-center" text="sm" style="display: none;">
     <CurrentVersion />
     <a v-if="displayICP" opacity="80" class="flex" href="https://beian.miit.gov.cn/" target="_blank">
       苏ICP备17038157号
@@ -38,6 +39,17 @@ onBeforeMount(() => {
       <a href="https://yunle.fun" target="_blank" title="云乐坊">
         云乐坊工作室
       </a>
+    </div>
+  </div>
+
+  <!-- About next version -->
+  <div p="4 t-2" class="flex flex-col items-center justify-center" text="sm">
+    <div m="t-2" opacity="80">
+      <a href="#">Thank you for exploring the art of fine dining with us. <br>
+        May your culinary journey be filled with exquisite flavors and unforgettable experiences. </a>
+    </div>
+    <div class="gif-sisignature">
+        <img src="/img/cooks_signature.gif" alt="Cook's Signature" width="300" height="150">
     </div>
   </div>
 </template>

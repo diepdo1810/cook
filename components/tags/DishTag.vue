@@ -53,6 +53,8 @@ const mapDishTag = (text: string) => {
         '莲花洋葱（消耗洋葱！）': '莲花洋葱',
         '蒸蛋羹（硬核0失败版）': '蒸蛋羹硬',
         '雪碧拌面（要雪碧+老干妈）': '雪碧拌面',
+        '早餐白面包（无鸡蛋版）': '早餐白面包',
+        '朝鲜冷面（方便面版）': '朝鲜冷面',
     };
     return mappings[text] || '';
 };
@@ -72,7 +74,7 @@ const speciaLabel = (text: string | null) => {
 const dishLabel = computed(() => {
   const emojis = getEmojisFromStuff(props.dish.stuff)
   const trans = $t(`dishTag.${speciaLabel(props.dish.name)}`)
-  console.log(trans);
+  // console.log(trans);
   return `${props.dish.tags?.includes('杂烩') ? '🍲' : emojis.join(' ')} ${trans}`
 })
 </script>
