@@ -23,7 +23,7 @@ export default defineNuxtConfig({
     // fix QQ in iOS
     // See https://github.com/unjs/ofetch/pull/366
     'nuxt-fix-ofetch',
-//    "@nuxtjs/ionic",
+    "@nuxtjs/ionic",
     "@nuxtjs/i18n"
   ],
 

@@ -1,13 +1,11 @@
 <script lang="ts" setup>
-const router = useRouter()
-function back() {
-  router.back()
-}
+const router = useIonRouter();
+const goBack = () => router.push('/')
 </script>
 
 <template>
   <YlfIconButton
     icon="i-ri-arrow-left-s-line"
-    @click="back"
+    @click="goBack"
   />
 </template>

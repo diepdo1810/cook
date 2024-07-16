@@ -24,8 +24,7 @@ onMounted(() => {
 
 <template>
   <VitePwaManifest />
-  <NuxtLayout>
-    <NuxtLoadingIndicator />
-    <NuxtPage />
-  </NuxtLayout>
+  <ion-app>
+    <ion-router-outlet />
+  </ion-app>
 </template>
