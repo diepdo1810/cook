@@ -28,17 +28,16 @@ const handleRefresh = (event: CustomEvent) => {
       <ion-refresher slot="fixed" :pull-factor="0.5" :pull-min="100" :pull-max="200" @ionRefresh="handleRefresh($event)">
         <ion-refresher-content></ion-refresher-content>
       </ion-refresher>
-      <div>
-        <CommonHeader>
-          {{ $t('我的') }}
-        </CommonHeader>
-        <div flex items-center justify-center>
+      <div flex>
           <YlfIconButton
             icon="i-ri-arrow-left-s-line"
             @click="backHelp"
           />
-        </div>
-
+          <CommonHeader flex items-center justify-center style="margin-left: 10rem">
+          {{ $t('我的') }}
+          </CommonHeader>
+      </div>
+      <div>
         <div
           class="mx-auto max-w-md w-full"
           px-2
@@ -65,12 +64,14 @@ const handleRefresh = (event: CustomEvent) => {
           </YlfForm>
         </div>
 
-        <div flex items-center justify-center>
+        <div flex justify-center>
+          <CommonHeader flex items-center justify-center ml-5>
+              {{ $t('首页') }}
+          </CommonHeader>
           <YlfIconButton
             icon="i-ri-arrow-right-s-line"
-            @click="nextHome"
-          />
-        </div>
+            @click="nextHome" />
+      </div>
         <BaseFooter mt-4 />
        </div>
     </ion-content>

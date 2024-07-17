@@ -45,10 +45,14 @@ const handleRefresh = (event: CustomEvent) => {
         </p>
 
         <ChooseFood />
-        <YlfIconButton
-          icon="i-ri-arrow-right-s-line"
-          @click="nextRandom"
-        />
+        <div flex justify-center>
+          <CommonHeader flex items-center justify-center ml-5>
+              {{ $t('今天吃什么') }}
+          </CommonHeader>
+          <YlfIconButton
+            icon="i-ri-arrow-right-s-line"
+            @click="nextRandom" />
+        </div>
      </Default>
     </ion-content>
   </ion-page>

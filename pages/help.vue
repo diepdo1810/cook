@@ -27,14 +27,14 @@ const handleRefresh = (event: CustomEvent) => {
         <ion-refresher-content></ion-refresher-content>
       </ion-refresher>
       <div class="w-full">
-        <CommonHeader>
-          {{ $t('帮助') }}
-        </CommonHeader>
-        <div flex items-center justify-center>
+        <div flex>
           <YlfIconButton
             icon="i-ri-arrow-left-s-line"
             @click="backRandom"
           />
+          <CommonHeader flex items-center justify-center style="margin-left: 8rem">
+            {{ $t('帮助') }}
+          </CommonHeader>
         </div>
 
         <InstallPwa />
@@ -168,13 +168,22 @@ const handleRefresh = (event: CustomEvent) => {
           </FAQItem>
         </div>
       </div>
-      <div flex items-center justify-center>
+      <div flex justify-center>
+          <CommonHeader flex items-center justify-center ml-5>
+              {{ $t('我的') }}
+          </CommonHeader>
           <YlfIconButton
-              icon="i-ri-arrow-right-s-line"
-              @click="nextUser"
-          />
+            icon="i-ri-arrow-right-s-line"
+            @click="nextUser" />
       </div>
       <BaseFooter mt-4 />
     </ion-content>
   </ion-page>
 </template>
+
+<style scoped>
+.ml-custom {
+  margin-left: 28%;
+}
+
+</style>

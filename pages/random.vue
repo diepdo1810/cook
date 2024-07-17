@@ -24,18 +24,24 @@
         <ion-refresher-content></ion-refresher-content>
       </ion-refresher>
       <div flex flex-col>
-        <CommonHeader>
-          {{ $t('今天吃什么') }}
-        </CommonHeader>
-        <div flex flex-grow flex-col items-center justify-center>
+        <div flex>
           <BackBtn ml-3 />
+          <CommonHeader flex items-center justify-center ml-5>
+            {{ $t('今天吃什么') }}
+          </CommonHeader>
+        </div>
+        <div flex flex-grow flex-col items-center justify-center>
           <RandomRecipe />
-          <YlfIconButton
-            icon="i-ri-arrow-right-s-line"
-            @click="nextHelp"
-          />
         </div>
       </div>
+      <div flex justify-center>
+          <CommonHeader flex items-center justify-center ml-5>
+              {{ $t('帮助') }}
+          </CommonHeader>
+          <YlfIconButton
+            icon="i-ri-arrow-right-s-line"
+            @click="nextHelp" />
+       </div>
     </ion-content>
   </ion-page>
 </template>
