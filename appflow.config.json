@@ -5,7 +5,7 @@
             "dependencyInstallCommand": "pnpm install",
             "webBuildCommand": "pnpm build",
             "androidPath": "android",
-            "webBuildDir": "dist"
+            "webBuildDir": ".output/public"
         }
     ]
 }
