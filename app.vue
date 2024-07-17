@@ -2,6 +2,7 @@
 import { installPrompt } from './utils/pwa'
 import { appName } from '~/constants'
 import { useIndexedDB } from '~/composables/db'
+import { loadingController } from '@ionic/vue';
 
 // https://nuxt.com/docs/api/composables/use-head
 useHead({
@@ -18,8 +19,18 @@ const indexedDB = useIndexedDB()
 
 onMounted(() => {
   installPrompt()
+  showLoading()
   indexedDB.init()
 })
+
+const showLoading = async () => {
+  const loading = await loadingController.create({
+    message: 'Loading...',
+    duration: 3000,
+    cssClass: 'custom-loading'
+  });
+  await loading.present();
+}
 </script>
 
 <template>

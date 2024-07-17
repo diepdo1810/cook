@@ -8,7 +8,7 @@ const { random, randomRecipes } = useRandomRecipe(count)
     <button rounded-full p-2 btn @click="dec()">
       <div i-carbon-subtract />
     </button>
-    <div font="mono" w="15" m-auto inline-block>
+    <div font="mono" w="15" m-auto inline-block text-center>
       {{ count }}
     </div>
     <button rounded-full p-2 btn @click="inc()">

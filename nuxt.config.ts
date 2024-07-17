@@ -2,6 +2,7 @@ import process from 'node:process'
 import { pwa } from './config/pwa'
 import { appDescription } from './constants/index'
 
+
 Object.assign(process.env, {
   VITE_COMMIT_REF: process.env.CF_PAGES_COMMIT_SHA || '',
 })
@@ -51,6 +52,8 @@ export default defineNuxtConfig({
     '@unocss/reset/tailwind.css',
     '~/styles/css-vars.scss',
     '~/styles/index.scss',
+    '@ionic/vue/css/palettes/dark.class.css',
+    '~/styles/variables.scss',
   ],
 
   colorMode: {

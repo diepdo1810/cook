@@ -6,6 +6,13 @@ const backRandom = () => {
 const nextUser = () => {
   router.push('/user');
 }
+const handleRefresh = (event: CustomEvent) => {
+    setTimeout(() => {
+      if (event.target) {
+        (event.target as HTMLIonRefresherElement).complete();
+      }
+    }, 2000);
+}
 </script>
 <template>
   <ion-page>
@@ -16,6 +23,9 @@ const nextUser = () => {
     </ion-header>
 
     <ion-content>
+      <ion-refresher slot="fixed" :pull-factor="0.5" :pull-min="100" :pull-max="200" @ionRefresh="handleRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
       <div class="w-full">
         <CommonHeader>
           {{ $t('帮助') }}

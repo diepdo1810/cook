@@ -8,6 +8,13 @@ const router = useIonRouter();
 const nextRandom = () => {
   router.push('/random');
 }
+const handleRefresh = (event: CustomEvent) => {
+    setTimeout(() => {
+      if (event.target) {
+        (event.target as HTMLIonRefresherElement).complete();
+      }
+    }, 2000);
+}
 </script>
 
 <template>
@@ -19,6 +26,9 @@ const nextRandom = () => {
     </ion-header>
 
     <ion-content class="ion-padding">
+      <ion-refresher slot="fixed" :pull-factor="0.5" :pull-min="100" :pull-max="200" @ionRefresh="handleRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
       <Default>
         <div text-4xl mt-10>
           <button

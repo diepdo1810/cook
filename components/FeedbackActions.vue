@@ -3,7 +3,7 @@ import { links } from '~/constants'
 </script>
 
 <template>
-  <div>
+  <div flex items-center justify-center>
     <a
       m="2"
       class="feedback-button"
