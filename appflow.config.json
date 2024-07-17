@@ -3,7 +3,7 @@
         {
             "appId": "4a59590b",
             "dependencyInstallCommand": "pnpm install",
-            "webBuildCommand": "pnpm run build",
+            "webBuildCommand": "pnpm build",
             "androidPath": "android"
         }
     ]
