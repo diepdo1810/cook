@@ -4,7 +4,8 @@
             "appId": "4a59590b",
             "dependencyInstallCommand": "pnpm install",
             "webBuildCommand": "pnpm build",
-            "androidPath": "android"
+            "androidPath": "android",
+            "webBuildDir": "dist"
         }
     ]
 }
