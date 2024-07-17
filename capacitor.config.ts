@@ -1,8 +1,8 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'nuxt-ionic-project',
+  appId: 'cook.chiaser.project',
+  appName: 'cook',
   webDir: 'dist'
 };
 

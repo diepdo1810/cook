@@ -1,0 +1,11 @@
+{
+    "apps": [
+        {
+            "appId": "cook.chiaser.project",
+            "root": "cook",
+            "dependencyInstallCommand": "pnpm install",
+            "webBuildCommand": "pnpm run build",
+            "androidPath": "android"
+        }
+    ]
+}
