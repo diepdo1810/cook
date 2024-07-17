@@ -2,6 +2,7 @@
     "apps": [
         {
             "appId": "4a59590b",
+            "root": "dist",
             "dependencyInstallCommand": "pnpm install",
             "webBuildCommand": "pnpm build",
             "androidPath": "android"
