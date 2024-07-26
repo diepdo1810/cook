@@ -17,6 +17,7 @@ const recipePanelRef = ref()
 const { isVisible, show } = useInvisibleElement(recipePanelRef)
 
 function toggleStuff(item: StuffItem, category = '', _e?: Event) {
+  console.log('toggleStuff', item)
   rStore.toggleStuff(item.name)
 
   if (curStuff.value.includes(item.name))

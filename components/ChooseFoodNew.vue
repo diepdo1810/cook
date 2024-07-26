@@ -2,73 +2,71 @@
     <div class="card flex justify-center">
         <PanelMenu :model="items" class="w-full md:w-80">
             <template #item="{ item }">
-               <VegetableTagNew :item="item" />
+               <VegetableTagNew :item="item" @toggleStuff="toggleStuff(item, item.type)" />
             </template>
         </PanelMenu>
     </div>
+    <RecipePanel ref="recipePanelRef" />
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { meat, staple, tools, vegetable } from '~/data/food'
-const { t: $t } = useI18n()
+import { storeToRefs } from 'pinia'
+import type { StuffItem } from '~/types'
+
 const rStore = useRecipeStore()
 const curStuff = computed(() => rStore.selectedStuff)
 
-console.log('curStuff', curStuff)
-const mapDishTag = (text) => {
-    const mappings = {
-        '鱼（Todo）': '鱼',
-    };
-    return mappings[text] || '';
-};
+const recipeBtnRef = ref<HTMLButtonElement>()
 
-const speciaLabel = (text) => {
-    if (text) {
-        const mappedTag = mapDishTag(text);
-        if (mappedTag) {
-            return mappedTag;
+const gtm = useGtm()
+const recipePanelRef = ref()
+
+function toggleStuff(item: StuffItem, category = '', _e?: Event) {
+    console.log('toggleStuff', item)
+    console.log('category', category)
+  rStore.toggleStuff(item.name)
+
+  if (curStuff.value.includes(item.name))
+  gtm?.trackEvent({
+    event: 'click',
+    category: `${category}_${item.name}`,
+    action: 'click_stuff',
+    label: '食材',
+  })
+  gtm?.trackEvent({
+    event: 'click_stuff',
+    action: item.name,
+  })
+}
+
+const meatLabel = 'meat';
+const stapleLabel = 'staple';
+const toolsLabel = 'tools';
+const vegetableLabel = 'vegetable';
+
+
+const { t: $t } = useI18n()
+
+const mapItem = (food: Array<any>, name: string) => {
+    return food.map(item => {
+        return {
+            ...item,
+            name: item.name,
+            emoji: name === toolsLabel ? item.icon : item.emoji,
+            type: name,
+            active: true,
         }
+     })
+}
 
-        return text;
-    }
-    return null;
-};
+const vegetableItems = mapItem(vegetable, vegetableLabel)
 
-const vegetableItems = vegetable.map(item => {
-    return {
-        ...item,
-        name: $t(`vegetable.${speciaLabel(item.name)}`),
-        emoji: item.emoji,
-        active: curStuff.value.includes(item.name)
-    }
-})
+const meatItems = mapItem(meat, meatLabel)
 
-const meatItems = meat.map(item => {
-    return {
-        ...item,
-        name: $t(`meat.${speciaLabel(item.name)}`),
-        emoji: item.emoji,
-        active: curStuff.value.includes(item.name)
-    }
-})
+const stapleItems = mapItem(staple, stapleLabel)
 
-const stapleItems = staple.map(item => {
-    return {
-        ...item,
-        name: $t(`staple.${speciaLabel(item.name)}`),
-        emoji: item.emoji,
-        active: curStuff.value.includes(item.name)
-    }
-})
-
-const toolsItems = tools.map(item => {
-    return {
-        ...item,
-        name: $t(`tools.${speciaLabel(item.name)}`),
-        emoji: item.icon,
-        active: curStuff.value.includes(item.name)
-    }
-})
+const toolsItems = mapItem(tools, toolsLabel)
 
 const items = ref([
     {
@@ -76,28 +74,28 @@ const items = ref([
         emoji: "🥬",
         badge: vegetable.length,
         items: vegetableItems,
-        type: 'vegetable',
+        type: vegetableLabel,
     },
     {
         name: $t('肉肉们'),
         emoji: "🥩",
         badge: meat.length,
         items: meatItems,
-        type: 'meat'
+        type: meatLabel,
     },
     {
         name: $t('shorcutChoose'),
         emoji: "🍚",
         badge: staple.length,
         items: stapleItems,
-        type: 'staple'
+        type: stapleLabel,
     },
     {
         name: $t('tools'),
         emoji: "🔪",
         badge: tools.length,
         items: toolsItems,
-        type: 'tools'
+        type: toolsLabel,
     }
 ]);
 </script>
