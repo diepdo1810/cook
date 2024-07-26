@@ -11,11 +11,12 @@ function closeModal() {
 function openModal() {
   isOpen.value = true
 }
-
+const { t: $t } = useI18n()
 const keyword = ref('')
 async function getFilterRecipes(keyword: string) {
   return db.recipes.filter((recipe) => {
-    return recipe.name.includes(keyword)
+    const name = $t(`dishTag.${recipe.name}`)
+    return name.includes(keyword)
   }).toArray()
 }
 const filteredRecipes = computedAsync(async () => {

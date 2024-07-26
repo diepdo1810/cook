@@ -1,5 +1,6 @@
 export default {
     hello: 'Hello',
+    cooK: 'Cook',
     cookToday: 'Okay, today we are going to cook!',
     重置: 'Reset',
     食材: 'Ingredients',
@@ -7,6 +8,7 @@ export default {
     菜菜们: 'Dishes',
     肉肉们: 'Meats',
     choose: 'Do you want to cook the staple food together? (You can also not choose)',
+    shorcutChoose: 'Cook the staple food together?',
     再选一下厨具: 'Select kitchenware again',
     模糊匹配: 'Fuzzy match',
     严格匹配: 'Strict match',

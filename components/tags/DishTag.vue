@@ -28,9 +28,7 @@ function triggerGtm(dish: RecipeItem) {
     action: dish.name,
   })
 }
-const { t: $t } = useI18n({
-  locale: 'en',
-})
+const { t: $t } = useI18n()
 
 const mapDishTag = (text: string) => {
     const mappings: { [key: string]: string } = {

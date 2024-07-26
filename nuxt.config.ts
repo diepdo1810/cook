@@ -1,6 +1,7 @@
 import process from 'node:process'
 import { pwa } from './config/pwa'
 import { appDescription } from './constants/index'
+import Aura from '@primevue/themes/aura';
 
 Object.assign(process.env, {
   VITE_COMMIT_REF: process.env.CF_PAGES_COMMIT_SHA || '',
@@ -23,19 +24,33 @@ export default defineNuxtConfig({
     // fix QQ in iOS
     // See https://github.com/unjs/ofetch/pull/366
     'nuxt-fix-ofetch',
+    '@primevue/nuxt-module',
     "@nuxtjs/i18n"
   ],
 
-  i18n: {
-    locales: [
-      { code: 'en', iso: 'en-US', file: 'en.js' },
-      { code: 'vi', iso: 'vi-VN', file: 'vi.js' }
-    ],
-    defaultLocale: 'en',
-    langDir: 'locales/',
-    strategy: 'prefix_except_default',
-    vueI18n: 'en'
+  primevue: {
+    autoImport: true,
+    options: {
+      theme: {
+        preset: Aura,
+      }
+    }
   },
+  
+  plugins: [
+    '~/plugins/i18n.ts',
+  ],
+
+  // i18n: {
+  //   locales: [
+  //     { code: 'en', iso: 'en-US', file: 'en.js' },
+  //     { code: 'vi', iso: 'vi-VN', file: 'vi.js' }
+  //   ],
+  //   defaultLocale: 'en',
+  //   langDir: 'locales/',
+  //   strategy: 'prefix_except_default',
+  //   vueI18n: 'en'
+  // },
 
   experimental: {
     // when using generate, payload js assets included in sw precache manifest
@@ -97,4 +112,7 @@ export default defineNuxtConfig({
   devtools: {
     enabled: true,
   },
+  devServer: {
+    port: 3001
+  }
 })
