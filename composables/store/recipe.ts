@@ -7,6 +7,9 @@ import { useAppStore } from './app'
 import type { RecipeItem, StuffItem } from '~/types'
 
 const namespace = 'cook'
+const currentPage = ref(1)
+const itemsPerPage = ref(10)
+
 
 /**
  * survival: 生存模式
@@ -18,7 +21,7 @@ export type SearchMode = 'survival' | 'loose' | 'strict'
 export const useRecipeStore = defineStore('recipe', () => {
   const gtm = useGtm()
   const { settings } = useAppStore()
-
+  const { t:$t } = useI18n();
   /**
    * 搜索关键字
    */
@@ -114,8 +117,12 @@ export const useRecipeStore = defineStore('recipe', () => {
       }).toArray()
     }
 
-    if (keyword.value)
-      result = result.filter(item => item.name.includes(keyword.value))
+    if (keyword.value) {
+      result = result.filter(item => {
+        const name = $t(`dishTag.${item.name}`).toLowerCase()
+        return name.includes(keyword.value.toLowerCase())
+      })
+    }
 
     isSearching.value = false
     return result
@@ -157,6 +164,15 @@ export const useRecipeStore = defineStore('recipe', () => {
     displayedRecipe.value = await searchRecipes()
   })
 
+  const paginatedRecipes = computed(() => {
+    const start = (currentPage.value - 1) * itemsPerPage.value
+    const end = start + itemsPerPage.value
+    return displayedRecipe.value.slice(start, end)
+  })
+
+  console.log(recipesLength)
+  console.log(displayedRecipe.value)
+
   return {
     recipesLength,
 
@@ -178,6 +194,14 @@ export const useRecipeStore = defineStore('recipe', () => {
     // useRecipe
     displayedRecipe,
     clickTool,
+
+    // pagination
+    currentPage,
+    itemsPerPage,
+    paginatedRecipes,
+    setPage(page: number) {
+      currentPage.value = page
+    }
   }
 })
 

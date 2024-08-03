@@ -19,7 +19,7 @@ const rStore = useRecipeStore()
     {{ $t('cookToday') }}
   </p>
   
-  <!-- <ChooseFood /> -->
-  <ChooseFoodNew />
+  <ChooseFood />
+  <!-- <ChooseFoodNew /> -->
 
 </template>

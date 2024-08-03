@@ -11,46 +11,29 @@ const showTooltip = computed(() => !selectedStuff.value.length && !curTool.value
 </script>
 
 <template>
-  <div
-    class="recipe-panel relative shadow transition hover:shadow-md"
-    m="x-2 y-4" p="2"
-    bg="gray-400/8"
-  >
+  <div class="recipe-panel relative shadow transition hover:shadow-md" m="x-2 y-4" p="2" bg="gray-400/8">
     <RecipePanelTitle />
-
     <ToggleMode />
-
     <button absolute right-4 top-4 @click="showSearchInput = !showSearchInput">
       <div v-if="!showSearchInput" i-ri-search-line />
       <div v-else i-ri-search-fill />
     </button>
-
     <div class="cook-recipes" p="2">
       <SearchFoodInput v-if="showSearchInput" />
-
       <Transition mode="out-in">
-        <span v-if="showTooltip" text="sm" p="2">
-        {{ $t('你要先选食材或工具哦') }}～
-        </span>
-
-        <div
-          v-else-if="rStore.isSearching"
-          relative flex items-center justify-center p-6
-          text-xl
-        >
+        <span v-if="showTooltip" text="sm" p="2">{{ $t('你要先选食材或工具哦') }}～</span>
+        <div v-else-if="rStore.isSearching" relative flex items-center justify-center p-6 text-xl>
           <div class="magnifying-glass" i-ri-search-line inline-flex />
         </div>
-
-        <div v-else-if="rStore.displayedRecipe.length">
-          <DishTag v-for="item, i in rStore.displayedRecipe" :key="i" :dish="item" />
+        <div v-else-if="rStore.paginatedRecipes.length">
+          <DishTag v-for="item, i in rStore.paginatedRecipes" :key="i" :dish="item" />
         </div>
-
         <div v-else text="sm">
           <span>{{ $t('还没有完美匹配的菜谱呢') }}……</span>
           <br>
           <span>{{ $t('大胆尝试一下') }}，{{ $t('或者') }}</span>
           <a href="#" @click="rStore.reset()">
-            <strong> {{ $t('换个组合') }}</strong>
+            <strong>{{ $t('换个组合') }}</strong>
           </a>
           <span>？</span>
           <br>
@@ -61,9 +44,11 @@ const showTooltip = computed(() => !selectedStuff.value.length && !curTool.value
           </div>
         </div>
       </Transition>
+      <Paginator :rows="rStore.itemsPerPage" :totalRecords="rStore.displayedRecipe.length" :page="rStore.currentPage - 1" @page="(e) => rStore.setPage(e.page + 1)" />
     </div>
   </div>
 </template>
+
 
 <style>
 @keyframes circle-rotate {

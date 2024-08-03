@@ -7,10 +7,9 @@ const { locale } = useI18n();
 const selectedLanguage = ref(locale.value);
 
 const langs = ref([
-  { name: 'English', value: 'en' },
-  { name: 'Vietnamese', value: 'vi' },
+  { name: 'English', value: 'en-US' },
+  { name: 'Vietnamese', value: 'vi-VN' },
 ]);
-
 watch(selectedLanguage, (newLocale: any) => {
   locale.value = newLocale.value;
 });
