@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
+import { loading, handleLoading } from '~/composables/loading';
 
 import { db } from '~/utils/db'
 
@@ -8,7 +9,13 @@ const isOpen = ref(false)
 function closeModal() {
   isOpen.value = false
 }
-function openModal() {
+
+const startLoading = async () => {
+  await handleLoading();
+}
+
+async function openModal() {
+  await handleLoading()
   isOpen.value = true
 }
 const { t: $t } = useI18n()
@@ -20,6 +27,7 @@ async function getFilterRecipes(keyword: string) {
   }).toArray()
 }
 const filteredRecipes = computedAsync(async () => {
+  startLoading()
   return await getFilterRecipes(keyword.value)
 })
 </script>
@@ -103,4 +111,26 @@ const filteredRecipes = computedAsync(async () => {
       </div>
     </Dialog>
   </TransitionRoot>
+
+
+
+  <div class="card flex justify-center spinner-overlay" v-if="loading">
+        <ProgressSpinner style="width: 50px; height: 50px" strokeWidth="8" fill="transparent"
+            animationDuration=".5s" aria-label="loading recipe" />
+  </div>
 </template>
+
+<style>
+.spinner-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+</style>

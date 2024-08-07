@@ -5,21 +5,13 @@ const { random, randomRecipes } = useRandomRecipe(count)
 
 <template>
   <div inline-flex m="y-3">
-    <button rounded-full p-2 btn @click="dec()">
-      <div i-carbon-subtract />
-    </button>
+    <Button type="button" icon="pi pi-minus" @click="dec()" />
     <div font="mono" w="15" m-auto inline-block>
       {{ count }}
     </div>
-    <button rounded-full p-2 btn @click="inc()">
-      <div i-carbon-add />
-    </button>
+    <Button type="button" icon="pi pi-plus" @click="inc()" />
   </div>
-
-  <button cursor-pointer class="inline-flex inline-flex items-center justify-center rounded-md border-none bg-blue-600 px-3 py-1.5 text-sm text-white font-semibold leading-6 shadow-sm hover:bg-blue-500 focus-visible:outline-2 focus-visible:outline-blue-600 focus-visible:outline-offset-2 focus-visible:outline" @click="random">
-    <div class="transition" hover="text-blue-500" i-ri-refresh-line mr-1 inline-flex />
-    <div>{{ $t('随机一下') }}</div>
-  </button>
+  <Button icon="pi pi-spin pi-cog" :label="$t('随机一下')" @click="random" />
 
   <div v-show="randomRecipes.length > 0">
     <div m="t-8" flex="~ col">
@@ -28,4 +20,6 @@ const { random, randomRecipes } = useRandomRecipe(count)
       </template>
     </div>
   </div>
+
+  <ScrollTop />
 </template>

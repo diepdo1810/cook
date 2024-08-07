@@ -39,7 +39,6 @@ const route = useRoute()
 const router = useRouter()
 
 function onClick(item: BottomMenuItem) {
-  // router.push(item.to || '/')
   router.replace(item.to || '/')
 }
 </script>

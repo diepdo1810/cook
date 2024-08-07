@@ -44,7 +44,12 @@ const showTooltip = computed(() => !selectedStuff.value.length && !curTool.value
           </div>
         </div>
       </Transition>
-      <Paginator :rows="rStore.itemsPerPage" :totalRecords="rStore.displayedRecipe.length" :page="rStore.currentPage - 1" @page="(e) => rStore.setPage(e.page + 1)" />
+      <Paginator
+        :rows="rStore.itemsPerPage"
+        :totalRecords="rStore.displayedRecipe.length"
+        :page="rStore.currentPage - 1" 
+        @page="(e) => rStore.setPage(e.page + 1)"
+        />
     </div>
   </div>
 </template>
@@ -63,5 +68,9 @@ const showTooltip = computed(() => !selectedStuff.value.length && !curTool.value
 .magnifying-glass {
   margin: auto;
   animation: circle-rotate 4s linear infinite;
+}
+
+.p-paginator {
+  background: none !important;
 }
 </style>

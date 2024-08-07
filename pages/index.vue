@@ -1,10 +1,8 @@
 <script lang="ts" setup>
-import LanguageSwitcher from '../components/LanguageSwitcher.vue';
 const rStore = useRecipeStore()
 </script>
 
 <template>
-    <LanguageSwitcher />
   <div text-4xl>
     <button
       class="cursor-pointer transition active:text-green-800 hover:(text-green-600)"
