@@ -138,7 +138,6 @@ const translate = (food: any, name: string|null) => {
         </ToolTag>
       </div>
     </div>
-
     <Transition>
       <BasketButton ref="recipeBtnRef" :is-visible="isVisible" @click="show" />
     </Transition>
