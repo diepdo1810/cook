@@ -4,5 +4,6 @@
     <DarkToggle absolute left-3 top-5 />
     <SearchRecipe />
     <TheBottomMenu fixed bottom-0 left-0 right-0 />
+    <APlayer />
   </main>
 </template>

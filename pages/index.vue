@@ -16,7 +16,6 @@ const rStore = useRecipeStore()
   <p text="sm" m="b-4">
     {{ $t('cookToday') }}
   </p>
-  
   <ChooseFood />
   <!-- <ChooseFoodNew /> -->
 

@@ -26,6 +26,7 @@
   "dependencies": {
     "@miitvip/admin-pro": "^3.1.9",
     "@primevue/themes": "^4.0.1",
+    "aplayer": "^1.10.1",
     "dayjs": "^1.11.10",
     "primeicons": "^7.0.0",
     "primevue": "^4.0.1",

@@ -170,9 +170,6 @@ export const useRecipeStore = defineStore('recipe', () => {
     return displayedRecipe.value.slice(start, end)
   })
 
-  console.log(recipesLength)
-  console.log(displayedRecipe.value)
-
   return {
     recipesLength,
 
