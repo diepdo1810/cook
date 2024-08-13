@@ -5,6 +5,7 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { useNuxtApp } from '#app';
+
 /**
     async function fetchSongList() {
         const ids = '1987660367,1977983298,2144492937,1955720485,1455452759,1943498394,1403213631,1479174227'
@@ -31,6 +32,7 @@ import { useNuxtApp } from '#app';
             // const url = await fetchSongDetails(song.id);
             const localUrl = `/mp3/perfect_day_${song.id}.mp3`;
             return {
+                id: song.id,
                 name: song.name,
                 artist: song.artist,
                 url: localUrl,
@@ -74,8 +76,6 @@ Audio.prototype.getList = async function() {
 
 const songList = new Audio('/songs.json');
 
-// show all url mp3 and loading
-
 async function createAudioList() {
     const lists = await songList.getList();
     const audioList = lists.map(song => ({
@@ -91,10 +91,22 @@ async function createAudioList() {
 
 if (!localStorage.getItem('audio')) {
     createAudioList().then(audioList => {
-        localStorage.setItem('audio', JSON.stringify(audioList));
+        // randomize the list (save only 1 song)
+        const randomIndex = Math.floor(Math.random() * audioList.length);
+        const randomSong = audioList[randomIndex];
+        localStorage.setItem('audio', JSON.stringify([randomSong]));
+
+        /**
+        const dataStr = JSON.stringify(audioList);
+        const dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
+        const exportFileDefaultName = 'audio.json';
+        const linkElement = document.createElement('a');
+        linkElement.setAttribute('href', dataUri);
+        linkElement.setAttribute('download', exportFileDefaultName);
+        linkElement.click();
+        */
     });
 }
-
 
 onMounted(async () => {
     const id = document.getElementById('aplayer');
