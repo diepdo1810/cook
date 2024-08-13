@@ -10,7 +10,14 @@
 
     <div class="mx-auto max-w-md w-full rounded-2xl p-2" text-left>
       <FAQItem :title="$t('faq.未来计划')">
-        {{ $t('faq.1') }}
+        <p>{{ $t('faq.1') }}</p>
+        <br>
+        <ul>
+          <li><b>{{ $t('faq.11') }}</b>{{ $t('faq.12') }}</li>
+          <li><b>{{ $t('faq.13') }}</b>{{ $t('faq.14') }}</li>
+        </ul>
+        <br>
+        <p>{{ $t('faq.15') }}</p>
       </FAQItem>
 
       <FAQItem :title="$t('faq.什么是模式')">
@@ -36,7 +43,9 @@
       </FAQItem>
 
       <FAQItem :title="$t('faq.是否有')">
-        <b>{{ $t('faq.APP') }}</b>
+        <p>{{ $t('faq.APP') }}</p>
+        <br>
+        <p>{{ $t('faq.APP1') }}</p>
       </FAQItem>
 
       <FAQItem title="未来是否会收费？" class-name="hidden">
@@ -83,7 +92,7 @@
 
       <hr h="1" my="4" bg-black>
 
-      <FAQItem :default-open="true" :title="$t('faq.关于')">
+      <FAQItem :title="$t('faq.关于')">
         <div text-left>
           <ul>
             <li>
@@ -96,9 +105,16 @@
         </div>
       </FAQItem>
 
-      <FAQItem :title="$t('faq.关于我页面无法点击')">
+      <FAQItem :default-open="true" :title="$t('faq.关于我页面无法点击')">
         <div text-left>
-          {{ $t('faq.about_3') }}
+          <ul>
+            <li>
+              {{ $t('faq.about_3') }}
+            </li>
+            <li>
+              {{ $t('faq.about_4') }}
+            </li>
+          </ul>
         </div>
       </FAQItem>
 
