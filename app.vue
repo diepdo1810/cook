@@ -9,7 +9,7 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: '好的，今天我们来做菜！',
+      content: 'Tốt, hôm nay chúng ta sẽ nấu ăn!',
     },
   ],
 })

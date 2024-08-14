@@ -9,6 +9,7 @@ import { links } from '~/constants'
       class="feedback-button"
       :href="links.contribute" target="_blank"
       title="居家菜谱投稿"
+      style="background-color: brown;"
     >
       {{ $t('立即投稿') }}
     </a>
