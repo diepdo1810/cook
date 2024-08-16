@@ -63,6 +63,7 @@
     "eslint-plugin-format": "^0.1.1",
     "fake-indexeddb": "^5.0.2",
     "happy-dom": "^14.7.1",
+    "js-cookie": "^3.0.5",
     "jsdom": "^24.0.0",
     "nuxt": "3.11.2",
     "nuxt-fix-ofetch": "^0.0.14",
